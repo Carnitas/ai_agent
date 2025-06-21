@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 
 from dotenv import load_dotenv
 from google import genai
@@ -8,7 +9,7 @@ from google.genai import types
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
-USER_PROMPT = "What is the meaning of life?"
+USER_PROMPT = sys.argv[1] if len(sys.argv) > 1 else "What is the meaning of life?"
 messages = [
     types.Content(role="user", parts=[types.Part(text=USER_PROMPT)]),
 ]
