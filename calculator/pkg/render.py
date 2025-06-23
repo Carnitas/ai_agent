@@ -1,4 +1,4 @@
-def render(expression: str, result: float) -> str:
+def render(expression: str, result: float | None) -> str:
     if isinstance(result, float) and result.is_integer():
         result_str = str(int(result))
     else:
