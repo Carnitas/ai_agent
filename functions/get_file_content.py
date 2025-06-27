@@ -1,6 +1,8 @@
 import os
 
-MAX_CHARS = 10000
+from google.genai import types
+
+from llm.config import MAX_CHARS
 
 
 def get_file_content(working_directory: str, file_path: str) -> str:
@@ -14,3 +16,19 @@ def get_file_content(working_directory: str, file_path: str) -> str:
     if len(content) > 10000:
         return content + f"[...File {file_path} truncated at 10000 characters]"
     return content
+
+
+SCHEMA_GET_FILE_CONTENT = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Prints the contents of a file to the console, "
+    "constrained to the working directory.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The path of the file to read, relative to the working directory.",
+            ),
+        },
+    ),
+)

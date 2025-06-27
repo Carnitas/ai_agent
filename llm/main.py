@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+from .call_function import AVAILABLE_FUNCTIONS
 from .prompts import SYSTEM_PROMPT
 
 
@@ -29,7 +30,7 @@ def main() -> None:
     if verbose:
         print(f"User prompt: {user_prompt}\n")
 
-    messages: list[str] = [
+    messages: list[types.Content] = [
         types.Content(role="user", parts=[types.Part(text=user_prompt)]),
     ]
 
@@ -37,15 +38,20 @@ def main() -> None:
 
 
 def generate_content(client: genai.Client, messages: list[str], verbose: bool) -> None:
+
     response = client.models.generate_content(
         model="gemini-2.0-flash-001",
         contents=messages,
-        config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT),
+        config=types.GenerateContentConfig(
+            tools=[AVAILABLE_FUNCTIONS], system_instruction=SYSTEM_PROMPT
+        ),
     )
     if verbose:
         print("Prompt tokens:", response.usage_metadata.prompt_token_count)
         print("Response tokens:", response.usage_metadata.candidates_token_count)
-    print(f"Response: {response.text}")
+    print(
+        f"Calling function: {response.function_calls[0].name}({response.function_calls[0].args})"
+    )
 
 
 if __name__ == "__main__":
