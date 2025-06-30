@@ -25,7 +25,9 @@ def call_function(function_call_part: types.FunctionCall, verbose: bool = False)
         str: The result of the function call.
     """
     if verbose:
-        print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+        result = (
+            f"Calling function: {function_call_part.name}({function_call_part.args})"
+        )
 
     # Simulate calling the function (replace with actual function call logic)
     result = f"Calling function: {function_call_part.name}"

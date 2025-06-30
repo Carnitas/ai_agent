@@ -37,7 +37,9 @@ def main() -> None:
     generate_content(client, messages, verbose)
 
 
-def generate_content(client: genai.Client, messages: list[str], verbose: bool) -> None:
+def generate_content(
+    client: genai.Client, messages: list[types.Content], verbose: bool
+) -> None:
 
     response = client.models.generate_content(
         model="gemini-2.0-flash-001",
@@ -46,12 +48,13 @@ def generate_content(client: genai.Client, messages: list[str], verbose: bool) -
             tools=[AVAILABLE_FUNCTIONS], system_instruction=SYSTEM_PROMPT
         ),
     )
-    if verbose:
+    if verbose and response.usage_metadata:
         print("Prompt tokens:", response.usage_metadata.prompt_token_count)
         print("Response tokens:", response.usage_metadata.candidates_token_count)
-    print(
-        f"Calling function: {response.function_calls[0].name}({response.function_calls[0].args})"
-    )
+    if response.function_calls:
+        print(
+            f"Calling function {response.function_calls[0].name}({response.function_calls[0].args})"
+        )
 
 
 if __name__ == "__main__":
