@@ -1,7 +1,7 @@
 repos:
   # Preconditions
   - repo: https://github.com/floatingpurr/sync_with_poetry
-    rev: 1.2.0
+    rev: 1.2.1
     hooks:
       - id: sync_with_poetry
         fail_fast: true
@@ -15,7 +15,7 @@ repos:
 
   # Language agnostic formatting
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: detect-private-key
@@ -37,7 +37,7 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/google/yamlfmt
-    rev: v0.17.2
+    rev: v0.19.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
@@ -50,7 +50,7 @@ repos:
           - --no-sort
         exclude: poetry.lock
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.22
+    rev: 1.0.0
     hooks:
       - id: mdformat
         args:
@@ -61,14 +61,14 @@ repos:
     hooks:
       - id: beautysh
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
+    rev: v0.11.0.1
     hooks:
       - id: shellcheck
 
   # Python
   ## Fixers
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.20.0
+    rev: v3.21.0
     hooks:
       - id: pyupgrade
   - repo: https://github.com/PyCQA/autoflake
@@ -119,7 +119,7 @@ repos:
           - flake8-tidy-imports
   ## Formatters
   - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
+    rev: 7.0.0
     hooks:
       - id: isort
         name: isort (python)
@@ -128,14 +128,14 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: 1.19.1
+    rev: 1.20.0
     hooks:
       - id: blacken-docs
         additional_dependencies:
           - black==25.9.0
   ## Linters
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.17.0
+    rev: v1.18.2
     hooks:
       - id: mypy
         additional_dependencies:
