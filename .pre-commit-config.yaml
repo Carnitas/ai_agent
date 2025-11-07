@@ -57,7 +57,7 @@ repos:
           - --wrap=80
 
   - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.2.1
+    rev: v6.4.1
     hooks:
       - id: beautysh
   - repo: https://github.com/shellcheck-py/shellcheck-py
