@@ -57,7 +57,7 @@ repos:
           - --wrap=80
 
   - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.2.1
+    rev: v6.4.1
     hooks:
       - id: beautysh
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -68,7 +68,7 @@ repos:
   # Python
   ## Fixers
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.0
+    rev: v3.21.1
     hooks:
       - id: pyupgrade
   - repo: https://github.com/PyCQA/autoflake
@@ -124,7 +124,7 @@ repos:
       - id: isort
         name: isort (python)
   - repo: https://github.com/psf/black
-    rev: 25.9.0
+    rev: 25.11.0
     hooks:
       - id: black
   - repo: https://github.com/adamchainz/blacken-docs
