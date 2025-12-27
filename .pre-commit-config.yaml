@@ -13,8 +13,8 @@ repos:
       - id: sync-pre-commit-deps
         fail_fast: true
 
-  # Language agnostic formatting
   - repo: https://github.com/pre-commit/pre-commit-hooks
+    # Language agnostic formatting
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
@@ -65,9 +65,9 @@ repos:
     hooks:
       - id: shellcheck
 
-  # Python
-  ## Fixers
   - repo: https://github.com/asottile/pyupgrade
+    # Python
+    ## Fixers
     rev: v3.21.2
     hooks:
       - id: pyupgrade
@@ -117,7 +117,7 @@ repos:
           - flake8-pep585
           - flake8-simplify
           - flake8-tidy-imports
-  ## Formatters
+          ## Formatters
   - repo: https://github.com/pycqa/isort
     rev: 7.0.0
     hooks:
@@ -132,8 +132,8 @@ repos:
     hooks:
       - id: blacken-docs
         additional_dependencies:
-          - black==25.9.0
-  ## Linters
+          - black==25.12.0
+          ## Linters
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.19.1
     hooks:
